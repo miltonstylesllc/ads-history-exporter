@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Ads History Exporter — Milton Styles LLC</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #232f3e;
+      color: #e8edf2;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 480px;
+    }
+    .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      background: #1a2535;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* Simple inline grid + arrow SVG matching the extension icon */
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 15px;
+      color: #aab4be;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    a.primary {
+      background: #ff9900;
+      color: #fff;
+    }
+    a.primary:hover { background: #e88a00; }
+    a.secondary {
+      background: transparent;
+      color: #aab4be;
+      border: 1px solid #3d4f63;
+    }
+    a.secondary:hover { background: #2d3f52; }
+    footer {
+      margin-top: 40px;
+      font-size: 12px;
+      color: #5a6b7b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Grid -->
+        <rect x="4" y="4" width="36" height="26" rx="1" stroke="white" stroke-width="1.5" fill="none"/>
+        <line x1="16" y1="4" x2="16" y2="30" stroke="white" stroke-width="1.5"/>
+        <line x1="28" y1="4" x2="28" y2="30" stroke="white" stroke-width="1.5"/>
+        <line x1="4" y1="11" x2="40" y2="11" stroke="white" stroke-width="1.5"/>
+        <line x1="4" y1="18" x2="40" y2="18" stroke="white" stroke-width="1.5"/>
+        <line x1="4" y1="25" x2="40" y2="25" stroke="white" stroke-width="1.5"/>
+        <!-- Arrow -->
+        <rect x="19" y="32" width="6" height="7" fill="#ff9900"/>
+        <polygon points="11,39 33,39 22,44" fill="#ff9900"/>
+      </svg>
+    </div>
+    <h1>Amazon Ads History Exporter</h1>
+    <p>
+      Export your Amazon Ads Change History to CSV with one click.
+      Free Chrome extension by Milton Styles LLC.
+    </p>
+    <div class="links">
+      <a class="primary" href="https://chromewebstore.google.com" target="_blank">Get on Chrome Web Store</a>
+      <a class="secondary" href="/ads-history-exporter/privacy">Privacy Policy</a>
+    </div>
+    <footer>&copy; 2026 Milton Styles LLC</footer>
+  </div>
+</body>
+</html>

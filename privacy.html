@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Amazon Ads History Exporter</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a1a2e;
+      background: #f8f9fa;
+    }
+
+    header {
+      background: #232f3e;
+      padding: 28px 24px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    header p {
+      color: #aab4be;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .accent { color: #ff9900; }
+
+    main {
+      max-width: 720px;
+      margin: 48px auto;
+      padding: 0 24px 80px;
+    }
+
+    .summary-box {
+      background: #232f3e;
+      color: #e8edf2;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+
+    .summary-box strong {
+      color: #ff9900;
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #232f3e;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #ff9900;
+      display: inline-block;
+    }
+
+    p { margin-bottom: 14px; color: #333; }
+
+    ul {
+      margin: 0 0 14px 20px;
+      color: #333;
+    }
+
+    ul li { margin-bottom: 6px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+
+    th {
+      background: #232f3e;
+      color: #fff;
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e0e0e0;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td { background: #f0f4f8; }
+
+    .contact {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-top: 36px;
+    }
+
+    .contact p { margin: 0; }
+    .contact a { color: #1a6b8a; text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1><span class="accent">Amazon Ads History Exporter</span> &mdash; Privacy Policy</h1>
+  <p>Milton Styles LLC &nbsp;&middot;&nbsp; Effective March 2026</p>
+</header>
+
+<main>
+
+  <div class="summary-box">
+    <strong>The short version</strong>
+    This extension does not collect, store, or transmit any of your data.
+    Everything happens inside your browser. Nothing leaves your device.
+  </div>
+
+  <h2>What This Extension Does</h2>
+  <p>
+    Amazon Ads History Exporter is a Chrome extension that reads the Change History
+    table already displayed in your Amazon Advertising Console and saves it as a CSV
+    file on your computer. That's it.
+  </p>
+  <p>
+    When you click "Export to CSV," the extension scrolls through the full list on
+    screen, captures every row, and triggers a download directly to your device.
+    No data is sent anywhere else.
+  </p>
+
+  <h2>Data We Do Not Collect</h2>
+  <ul>
+    <li>We do not collect any personal information</li>
+    <li>We do not collect your Amazon account credentials, username, or password</li>
+    <li>We do not collect your Amazon session tokens or cookies</li>
+    <li>We do not record or store your browsing history</li>
+    <li>We do not collect or store the advertising data you export</li>
+    <li>We do not use analytics, crash reporting, or usage tracking of any kind</li>
+  </ul>
+
+  <h2>How Your Data Is Handled</h2>
+  <p>
+    All processing happens locally inside your browser. The extension reads what is
+    already visible on your screen, assembles it into a CSV file, and downloads it
+    to your computer using your browser's standard file download.
+  </p>
+  <p>
+    The extension uses <code>chrome.storage.local</code> only to temporarily store
+    export state (for example, whether an export is currently running). This data
+    never leaves your device and is cleared automatically.
+  </p>
+  <p>
+    The CSV file produced is downloaded directly to your computer.
+    Milton Styles LLC never receives, sees, or stores this file.
+  </p>
+
+  <h2>Permissions Explained</h2>
+  <p>
+    The extension requests only the minimum permissions needed to function:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Permission</th><th>Why it is needed</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>activeTab</code></td>
+        <td>To read the Change History table on the Amazon Ads tab you have open</td>
+      </tr>
+      <tr>
+        <td><code>downloads</code></td>
+        <td>To trigger the CSV file download to your computer</td>
+      </tr>
+      <tr>
+        <td><code>scripting</code></td>
+        <td>To run the export logic on the Amazon Advertising page</td>
+      </tr>
+      <tr>
+        <td><code>storage</code></td>
+        <td>To store temporary export state locally in your browser</td>
+      </tr>
+      <tr>
+        <td>Host: <code>advertising.amazon.com</code></td>
+        <td>To limit the extension to only run on Amazon Advertising pages — nowhere else</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Third Parties</h2>
+  <p>
+    This extension does not share any data with any third party. It has no backend
+    servers, no analytics service, and no external API dependencies. There are no
+    third-party SDKs embedded in the extension.
+  </p>
+
+  <h2>Changes to This Policy</h2>
+  <p>
+    If this policy is updated, the new version will be published at this URL with an
+    updated effective date. Significant changes will also be noted in the extension's
+    Chrome Web Store update log.
+  </p>
+
+  <div class="contact">
+    <p>
+      <strong>Questions?</strong> Contact us at
+      <a href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
+    </p>
+  </div>
+
+  <footer>
+    &copy; 2026 Milton Styles LLC. Amazon Ads History Exporter is an independent
+    product and is not affiliated with or endorsed by Amazon.com, Inc.
+  </footer>
+
+</main>
+</body>
+</html>
