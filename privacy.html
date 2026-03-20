@@ -167,9 +167,9 @@
     to your computer using your browser's standard file download.
   </p>
   <p>
-    The extension uses <code>chrome.storage.local</code> only to temporarily store
-    export state (for example, whether an export is currently running). This data
-    never leaves your device and is cleared automatically.
+    The extension saves a small amount of temporary status data in your browser's local
+    storage — for example, whether an export is currently running. This data never
+    leaves your device and is cleared automatically.
   </p>
   <p>
     The CSV file produced is downloaded directly to your computer.
@@ -210,9 +210,24 @@
 
   <h2>Third Parties</h2>
   <p>
-    This extension does not share any data with any third party. It has no backend
-    servers, no analytics service, and no external API dependencies. There are no
-    third-party SDKs embedded in the extension.
+    <strong>Your advertising data</strong> is never shared with any third party.
+    The extension has no backend servers and no analytics service.
+  </p>
+  <p>
+    <strong>Payment processing (Pro tier only):</strong> If you subscribe to the Pro
+    tier, payment processing is handled by
+    <a href="https://extensionpay.com" target="_blank" rel="noopener">ExtensionPay</a>
+    (extensionpay.com), a Stripe-backed service. ExtensionPay uses a
+    non-personally-identifiable user identifier — derived from your Chrome browser,
+    not your Amazon account — to verify subscription status. Your name, card details,
+    and payment information are handled by ExtensionPay and Stripe and are subject to
+    their respective privacy policies. Milton Styles LLC never sees or stores your
+    payment information directly.
+  </p>
+  <p>
+    <strong>Subscription status check:</strong> When the extension loads, it contacts
+    extensionpay.com to verify your Pro subscription status. No advertising data,
+    Amazon account information, or browsing history is included in this request.
   </p>
 
   <h2>Changes to This Policy</h2>

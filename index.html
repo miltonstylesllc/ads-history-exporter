@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazon Ads History Exporter — Milton Styles LLC</title>
+  <title>Amazon Ads History Exporter — Export Change History to CSV</title>
+  <meta name="description" content="The only Chrome extension that exports Amazon Ads Change History to CSV. Free. Captures every row cleanly — no jumbled copy-paste. Pro tier adds full one-click history export.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -12,49 +13,120 @@
       color: #e8edf2;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 24px;
+      padding: 40px 24px;
     }
     .card {
-      max-width: 480px;
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
     }
     .icon {
       width: 80px;
       height: 80px;
-      margin: 0 auto 24px;
+      margin: 0 auto 28px;
       background: #1a2535;
       border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    /* Simple inline grid + arrow SVG matching the extension icon */
-    h1 {
-      font-size: 22px;
+    .eyebrow {
+      font-size: 12px;
       font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ff9900;
+      margin-bottom: 14px;
     }
-    p {
-      font-size: 15px;
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .subhead {
+      font-size: 16px;
       color: #aab4be;
-      line-height: 1.6;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .features {
+      list-style: none;
+      text-align: left;
+      background: #1a2535;
+      border-radius: 10px;
+      padding: 20px 24px;
       margin-bottom: 28px;
+    }
+    .features li {
+      font-size: 14px;
+      color: #c8d3dc;
+      padding: 6px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .features li::before {
+      content: "✓";
+      color: #ff9900;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .tiers {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .tier {
+      flex: 1;
+      background: #1a2535;
+      border-radius: 10px;
+      padding: 16px 18px;
+      border: 1px solid #2d3f52;
+    }
+    .tier.pro {
+      border-color: #c8a84b;
+    }
+    .tier-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #aab4be;
+      margin-bottom: 4px;
+    }
+    .tier.pro .tier-name { color: #c8a84b; }
+    .tier-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .tier-desc {
+      font-size: 13px;
+      color: #8a9bb0;
+      line-height: 1.5;
     }
     .links {
       display: flex;
       gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
+      margin-bottom: 16px;
     }
     a {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
       text-decoration: none;
       transition: background 0.2s;
     }
@@ -67,13 +139,17 @@
       background: transparent;
       color: #aab4be;
       border: 1px solid #3d4f63;
+      font-size: 13px;
+      padding: 10px 18px;
     }
     a.secondary:hover { background: #2d3f52; }
     footer {
-      margin-top: 40px;
+      margin-top: 36px;
       font-size: 12px;
-      color: #5a6b7b;
+      color: #4a5a6a;
+      line-height: 1.6;
     }
+    footer a { color: #5a7a9a; font-size: 12px; padding: 0; display: inline; font-weight: 400; }
   </style>
 </head>
 <body>
@@ -92,16 +168,53 @@
         <polygon points="11,39 33,39 22,44" fill="#ff9900"/>
       </svg>
     </div>
-    <h1>Amazon Ads History Exporter</h1>
-    <p>
-      Export your Amazon Ads Change History to CSV with one click.
-      Free Chrome extension by Milton Styles LLC.
+
+    <p class="eyebrow">Free Chrome Extension</p>
+    <h1>The only tool that exports Amazon Ads Change&nbsp;History to CSV.</h1>
+    <p class="subhead">
+      Amazon's Change History tab has no export button. Copy-pasting it into Excel
+      produces a jumbled mess — the table has irregular cells with links and sub-entries
+      that break on paste. This extension captures every row cleanly.
     </p>
+
+    <ul class="features">
+      <li>Every row captured — not just what's visible on screen</li>
+      <li>Works on History lists of any size, including multi-page results</li>
+      <li>Clean CSV — change type, from, to, date and time</li>
+      <li>Runs entirely in your browser — nothing is sent to any server</li>
+      <li>Works on campaign-level and ad-group-level History tabs — export from either</li>
+      <li>Pro: one-click date range presets (7d / 30d / This month / Last month / Year to date / Max) — no calendar navigation</li>
+      <li>Pro: batch multi-campaign export coming — included in Pro at no extra cost when it ships</li>
+    </ul>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">Free</div>
+        <div class="tier-price">$0</div>
+        <div class="tier-desc">Full History table export for any date range you have selected. Unlimited.</div>
+      </div>
+      <div class="tier pro">
+        <div class="tier-name">Pro</div>
+        <div class="tier-price">$9.99<span style="font-size:13px;font-weight:400;color:#8a9bb0">/mo</span></div>
+        <div class="tier-desc">Date range presets (7d / 30d / This month / Last month / Year to date / Max) + calendar automation. Batch multi-campaign export included when it ships. $79/year.</div>
+      </div>
+    </div>
+
     <div class="links">
-      <a class="primary" href="https://chromewebstore.google.com" target="_blank">Get on Chrome Web Store</a>
+      <a class="primary" href="https://chromewebstore.google.com" target="_blank">Get on Chrome Web Store — Free</a>
+    </div>
+    <div class="links">
       <a class="secondary" href="/ads-history-exporter/privacy">Privacy Policy</a>
     </div>
-    <footer>&copy; 2026 Milton Styles LLC</footer>
+
+    <footer>
+      &copy; 2026 Milton Styles LLC &nbsp;&middot;&nbsp;
+      <a href="/ads-history-exporter/privacy">Privacy</a> &nbsp;&middot;&nbsp;
+      <a href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
+      <br><br>
+      Amazon Ads History Exporter is an independent product and is not affiliated
+      with or endorsed by Amazon.com, Inc.
+    </footer>
   </div>
 </body>
 </html>
