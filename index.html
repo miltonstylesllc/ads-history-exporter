@@ -4,34 +4,196 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amazon Ads History Exporter — Export Change History to CSV</title>
-  <meta name="description" content="The only Chrome extension that exports Amazon Ads Change History to CSV. Free. Pro adds Batch Multi-Campaign Export, Account-Level History, and Enriched CSV for the full account-wide workflow.">
+  <meta name="description" content="Export Amazon Ads Change History to CSV. Free unlimited History exports. Pro adds Batch Export, Account-Level History, date presets, and Enriched CSV. Official guide and workflow overview.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: #232f3e;
       color: #e8edf2;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
+      padding: 40px 20px 48px;
     }
     .card {
-      max-width: 560px;
+      max-width: 640px;
+      margin: 0 auto;
       width: 100%;
       text-align: center;
     }
     .icon {
       width: 80px;
       height: 80px;
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
       background: #1a2535;
       border-radius: 18px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #ff9900;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .subhead {
+      font-size: 16px;
+      color: #aab4be;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    a.btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    a.primary {
+      background: #ff9900;
+      color: #fff;
+    }
+    a.primary:hover { background: #e88a00; }
+    a.secondary {
+      background: transparent;
+      color: #aab4be;
+      border: 1px solid #3d4f63;
+      font-size: 13px;
+      padding: 10px 18px;
+    }
+    a.secondary:hover { background: #2d3f52; }
+
+    /* Recommended workflow strip — tokens from extension / Remotion schematic */
+    .workflow-section {
+      text-align: left;
+      margin-bottom: 32px;
+      scroll-margin-top: 24px;
+    }
+    .workflow-section__heading {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ff9900;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .workflow-section__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .workflow-strip {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 560px) {
+      .workflow-strip {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+    }
+    .workflow-step {
+      background: linear-gradient(180deg, rgba(15, 31, 47, 0.95) 0%, rgba(13, 26, 42, 0.92) 100%);
+      border-radius: 10px;
+      padding: 14px 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .workflow-step::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent-bar, #ff9900);
+    }
+    .workflow-step--backfill { --accent-bar: linear-gradient(90deg, #ff9900, #ffd35d); border-color: rgba(26, 74, 107, 0.55); }
+    .workflow-step--maintain { --accent-bar: #2ca9d1; border-color: rgba(44, 169, 209, 0.35); }
+    .workflow-step--analyze { --accent-bar: linear-gradient(90deg, #ffe8a3, #f5b735); border-color: rgba(245, 183, 53, 0.35); }
+    .workflow-step__label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #ffe8a3, #ffd35d 45%, #f5b735);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .workflow-step--maintain .workflow-step__label,
+    .workflow-step--analyze .workflow-step__label {
+      color: #e8f0f8;
+      background: none;
+      -webkit-background-clip: unset;
+    }
+    .workflow-step--maintain .workflow-step__label { color: #2ca9d1; }
+    .workflow-step--analyze .workflow-step__label { color: #f5b735; }
+    .workflow-step__feature {
+      font-size: 15px;
+      font-weight: 700;
+      color: #e8f0f8;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .workflow-step__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px 2px var(--dot-glow, rgba(255, 153, 0, 0.45));
+      background: var(--dot-color, #ff9900);
+    }
+    .workflow-step--maintain .workflow-step__dot { --dot-color: #2ca9d1; --dot-glow: rgba(44, 169, 209, 0.45); }
+    .workflow-step--analyze .workflow-step__dot { --dot-color: #f5b735; --dot-glow: rgba(245, 183, 53, 0.45); }
+    .workflow-step__detail {
+      font-size: 12px;
+      color: #8a9bb0;
+      line-height: 1.45;
+    }
+    .video-section {
+      margin-bottom: 28px;
+      scroll-margin-top: 24px;
+    }
+    .video-section__heading {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+    .video-section__sub {
+      font-size: 14px;
+      color: #8a9bb0;
+      margin-bottom: 14px;
+      line-height: 1.5;
     }
     .video-container {
       position: relative;
@@ -41,8 +203,7 @@
       overflow: hidden;
       border-radius: 12px;
       background: #1a2535;
-      margin-bottom: 32px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .video-container iframe {
       position: absolute;
@@ -52,55 +213,44 @@
       height: 100%;
       border: 0;
     }
-    .eyebrow {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #ff9900;
-      margin-bottom: 14px;
-    }
-    h1 {
-      font-size: 26px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-    .subhead {
-      font-size: 16px;
-      color: #aab4be;
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-    .features {
+
+    .essentials {
       list-style: none;
       text-align: left;
       background: #1a2535;
       border-radius: 10px;
-      padding: 20px 24px;
-      margin-bottom: 28px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
     }
-    .features li {
+    .essentials li {
       font-size: 14px;
       color: #c8d3dc;
-      padding: 6px 0;
+      padding: 5px 0;
       display: flex;
       align-items: flex-start;
       gap: 10px;
       line-height: 1.5;
     }
-    .features li::before {
-      content: "✓";
+    .essentials li::before {
+      content: "\2713";
       color: #ff9900;
       font-weight: 700;
       flex-shrink: 0;
       margin-top: 1px;
     }
+
+    .tiers-heading {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8a9bb0;
+      margin-bottom: 12px;
+    }
     .tiers {
       display: flex;
       gap: 12px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       text-align: left;
     }
     .tier {
@@ -109,6 +259,7 @@
       border-radius: 10px;
       padding: 16px 18px;
       border: 1px solid #2d3f52;
+      cursor: default;
     }
     .tier.pro {
       border-color: #c8a84b;
@@ -133,130 +284,123 @@
       color: #8a9bb0;
       line-height: 1.5;
     }
-    .links {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-    }
-    a {
-      display: inline-block;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    a.primary {
-      background: #ff9900;
-      color: #fff;
-    }
-    a.primary:hover { background: #e88a00; }
-    a.secondary {
-      background: transparent;
-      color: #aab4be;
-      border: 1px solid #3d4f63;
-      font-size: 13px;
-      padding: 10px 18px;
-    }
-    a.secondary:hover { background: #2d3f52; }
-    .ecosystem-note {
-      margin-top: 32px;
-      padding: 16px 20px;
-      background: #1a2535;
-      border-radius: 8px;
-      border-left: 3px solid #ff9900;
-      text-align: left;
-    }
-    .ecosystem-note p {
-      font-size: 13px;
-      color: #8a9bb0;
-      line-height: 1.6;
-      margin: 0;
-    }
-    .ecosystem-note a {
-      color: #ff9900;
-      font-size: 13px;
-      padding: 0;
-      display: inline;
-      font-weight: 500;
-      text-decoration: underline;
-    }
+
     footer {
-      margin-top: 36px;
+      margin-top: 32px;
       font-size: 12px;
       color: #4a5a6a;
       line-height: 1.6;
     }
-    footer a { color: #5a7a9a; font-size: 12px; padding: 0; display: inline; font-weight: 400; }
+    footer a {
+      color: #5a7a9a;
+      font-size: 12px;
+      padding: 0;
+      display: inline;
+      font-weight: 400;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="card">
     <div class="icon">
-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Grid -->
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="4" y="4" width="36" height="26" rx="1" stroke="white" stroke-width="1.5" fill="none"/>
         <line x1="16" y1="4" x2="16" y2="30" stroke="white" stroke-width="1.5"/>
         <line x1="28" y1="4" x2="28" y2="30" stroke="white" stroke-width="1.5"/>
         <line x1="4" y1="11" x2="40" y2="11" stroke="white" stroke-width="1.5"/>
         <line x1="4" y1="18" x2="40" y2="18" stroke="white" stroke-width="1.5"/>
         <line x1="4" y1="25" x2="40" y2="25" stroke="white" stroke-width="1.5"/>
-        <!-- Arrow -->
         <rect x="19" y="32" width="6" height="7" fill="#ff9900"/>
         <polygon points="11,39 33,39 22,44" fill="#ff9900"/>
       </svg>
     </div>
 
-    <p class="eyebrow">Engineer Your Edge</p>
+    <p class="eyebrow">Amazon Ads History Exporter</p>
     <h1>The only tool that exports Amazon Ads Change History to CSV.</h1>
     <p class="subhead">
-      Every bid change, pause, keyword negation, and budget edit lives in your Change History tab — with no export button. This extension gets it out, so you can finally connect what you changed to what actually happened.
+      Amazon's Change History tab has no export button.
     </p>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/wLghaXjoUcw" title="Export Amazon Ads Change History to CSV (Finally!)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
 
-    <ul class="features">
-      <li>Export any campaign or ad-group History tab to CSV — free, unlimited, any available date range</li>
-      <li>Every row captured — not just what's visible on screen; works on History lists of any size</li>
-      <li>Runs entirely in your browser — clean CSV, nothing sent to any server</li>
-      <li>Backfill once — Batch Export walks every campaign (or just the ones you select) and exports all their combined change history to CSV</li>
-      <li>Maintain on cadence — Account-Level export captures every change across every campaign in one run; set it weekly, monthly, or whenever you need fresh data</li>
-      <li>Analyze with clean data — Enriched CSV breaks out campaign name, ad-group, type, and URL into separate columns — filter, pivot, or pipe straight into any tool you already use</li>
-      <li>Date range presets + Max — one click for any History table; use Max for the backfill, presets for your maintenance runs</li>
+    <section id="video" class="video-section" aria-labelledby="video-heading">
+      <h2 id="video-heading" class="video-section__heading">Watch the walkthrough</h2>
+      <p class="video-section__sub">
+        Step-by-step demo of Batch Export, Account-Level History, Enriched CSV, and date presets &mdash; the full Pro workflow.
+      </p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/wLghaXjoUcw" title="Export Amazon Ads Change History to CSV (Finally!)" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section id="workflow" class="workflow-section" aria-labelledby="workflow-title">
+      <p class="workflow-section__heading">Recommended workflow</p>
+      <h2 id="workflow-title" class="workflow-section__title">Backfill once. Maintain on cadence. Analyze with clean data.</h2>
+
+      <div class="workflow-strip">
+        <article class="workflow-step workflow-step--backfill">
+          <p class="workflow-step__label">Backfill once</p>
+          <p class="workflow-step__feature">
+            <span class="workflow-step__dot" aria-hidden="true"></span>
+            Batch Export
+          </p>
+          <p class="workflow-step__detail">Walk every campaign and ad group (or just the ones you select). Max date range for the full backfill.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--maintain">
+          <p class="workflow-step__label">Maintain on cadence</p>
+          <p class="workflow-step__feature">
+            <span class="workflow-step__dot" aria-hidden="true"></span>
+            Account-Level Export
+          </p>
+          <p class="workflow-step__detail">One export captures every change across your account. Run it weekly, monthly, or whenever you need fresh data.</p>
+        </article>
+
+        <article class="workflow-step workflow-step--analyze">
+          <p class="workflow-step__label">Analyze with clean data</p>
+          <p class="workflow-step__feature">
+            <span class="workflow-step__dot" aria-hidden="true"></span>
+            Enriched CSV
+          </p>
+          <p class="workflow-step__detail">Campaign name, ad group, type, and URL in separate columns &mdash; filter, pivot, or pipe into your tools.</p>
+        </article>
+      </div>
+    </section>
+
+    <ul class="essentials">
+      <li>Every row captured &mdash; paginated and virtualized tables, not just what's visible on screen</li>
+      <li>Runs entirely in your browser &mdash; CSV stays on your machine, nothing sent to a server</li>
+      <li>US Amazon Ads (<code style="font-size:12px;color:#aab4be">advertising.amazon.com</code>) &mdash; current supported scope</li>
     </ul>
 
+    <p class="tiers-heading">Free vs Pro</p>
     <div class="tiers">
       <div class="tier">
         <div class="tier-name">Free</div>
         <div class="tier-price">$0</div>
-        <div class="tier-desc">Full History table export for any date range you have selected. Unlimited.</div>
+        <div class="tier-desc">Export any campaign or ad-group History tab to CSV. Unlimited, any date range you select on the page.</div>
       </div>
       <div class="tier pro">
         <div class="tier-name">Pro</div>
         <div class="tier-price">$9.99<span style="font-size:13px;font-weight:400;color:#8a9bb0">/mo</span></div>
-        <div class="tier-desc">Date range presets + Max, Account-Level History export, Batch Multi-Campaign Export, and Enriched CSV. Subscribe and cancel anytime. $79/year.</div>
+        <div class="tier-desc">The three-step workflow above: Batch Export, Account-Level History, Enriched CSV, plus date presets and Max. $79/year. Cancel anytime from the extension.</div>
       </div>
     </div>
 
     <div class="links">
-      <a class="primary" href="https://chromewebstore.google.com/detail/hoamefolmpkjfoobcbkpjhmabecgncgk" target="_blank">Get on Chrome Web Store — Free</a>
+      <a class="btn primary" href="https://chromewebstore.google.com/detail/hoamefolmpkjfoobcbkpjhmabecgncgk" target="_blank" rel="noopener">Get on Chrome Web Store</a>
     </div>
     <div class="links">
-      <a class="secondary" href="/ads-history-exporter/privacy">Privacy Policy</a>
-    </div>
-
-    <div class="ecosystem-note">
-      <p>Need your full PPC data picture to feed a real optimization workflow — not just analysis? We're developing tools for full-account bid optimization, automated decision workflows, and deeper analysis across your complete data set. <a href="mailto:support@miltonstyles.com?subject=PPC%20Optimization%20Workflow">Drop us a note</a> if that's what you're after.</p>
+      <a class="btn secondary" href="/ads-history-exporter/privacy">Privacy Policy</a>
+      <a class="btn secondary" href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
     </div>
 
     <footer>
       &copy; 2026 Milton Styles LLC &nbsp;&middot;&nbsp;
       <a href="/ads-history-exporter/privacy">Privacy</a> &nbsp;&middot;&nbsp;
       <a href="mailto:support@miltonstyles.com">support@miltonstyles.com</a>
+      <br><br>
+      Building a full PPC optimization workflow beyond analysis? We&rsquo;re developing tools for full-account bid optimization and deeper automation.
+      <a href="mailto:support@miltonstyles.com?subject=PPC%20Optimization%20Workflow">Drop us a note</a> if that&rsquo;s what you&rsquo;re after.
       <br><br>
       Amazon Ads History Exporter is an independent product and is not affiliated
       with or endorsed by Amazon.com, Inc.
