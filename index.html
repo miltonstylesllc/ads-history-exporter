@@ -231,6 +231,10 @@
       gap: 10px;
       line-height: 1.5;
     }
+    .essentials li > span {
+      flex: 1;
+      min-width: 0;
+    }
     .essentials li::before {
       content: "\2713";
       color: #ff9900;
@@ -367,9 +371,9 @@
     </section>
 
     <ul class="essentials">
-      <li>Every row captured &mdash; paginated and virtualized tables, not just what's visible on screen</li>
-      <li>Runs entirely in your browser &mdash; CSV stays on your machine, nothing sent to a server</li>
-      <li>US Amazon Ads (<code style="font-size:12px;color:#aab4be">advertising.amazon.com</code>) &mdash; current supported scope</li>
+      <li><span>Every row captured &mdash; paginated and virtualized tables, not just what's visible on screen</span></li>
+      <li><span>Runs entirely in your browser &mdash; CSV stays on your machine, nothing sent to a server</span></li>
+      <li><span>US and India Amazon Ads &mdash; current supported scope</span></li>
     </ul>
 
     <p class="tiers-heading">Free vs Pro</p>
