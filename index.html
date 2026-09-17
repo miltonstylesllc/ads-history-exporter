@@ -317,9 +317,37 @@
       line-height: 1.6;
       margin-bottom: 14px;
     }
+    .related-tool__row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .related-tool__content {
+      flex: 1;
+      min-width: 0;
+    }
+    .related-tool__icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f1f2f;
+      border: 1px solid #2d3f52;
+    }
+    .related-tool__icon svg {
+      display: block;
+    }
     .related-tool .links {
       justify-content: flex-start;
       margin-bottom: 0;
+    }
+    @media (max-width: 520px) {
+      .related-tool__row {
+        flex-direction: column;
+      }
     }
 
     footer {
@@ -427,13 +455,26 @@
       <a class="btn primary" href="https://chromewebstore.google.com/detail/hoamefolmpkjfoobcbkpjhmabecgncgk" target="_blank" rel="noopener">Get on Chrome Web Store</a>
     </div>
     <section class="related-tool" aria-labelledby="related-rank-title">
-      <p class="related-tool__eyebrow">Also from Amazon Seller Dev</p>
-      <h2 id="related-rank-title" class="related-tool__title">Need today's Amazon rank too?</h2>
-      <p class="related-tool__detail">
-        Live Amazon Rank Tracker checks today&rsquo;s Amazon search in your browser session, captures key organic and sponsored placements, and can stack CSV exports on a schedule for ongoing rank analysis.
-      </p>
-      <div class="links">
-        <a class="btn secondary" href="https://miltonstylesllc.github.io/live-amazon-rank-tracker/" target="_blank" rel="noopener">View Live Amazon Rank Tracker</a>
+      <div class="related-tool__row">
+        <div class="related-tool__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+            <rect width="128" height="128" rx="18" fill="#0d1520"/>
+            <rect x="24" y="64" width="18" height="40" fill="#ffffff"/>
+            <rect x="54" y="44" width="18" height="60" fill="#ffffff"/>
+            <rect x="84" y="22" width="18" height="82" fill="#ffffff"/>
+            <circle cx="98" cy="33" r="11" fill="#1fd0d6"/>
+          </svg>
+        </div>
+        <div class="related-tool__content">
+          <p class="related-tool__eyebrow">Also from Amazon Seller Dev</p>
+          <h2 id="related-rank-title" class="related-tool__title">Need today's Amazon rank too?</h2>
+          <p class="related-tool__detail">
+            Live Amazon Rank Tracker checks today&rsquo;s Amazon search in your browser session, captures key organic and sponsored placements, and can stack CSV exports on a schedule for ongoing rank analysis.
+          </p>
+          <div class="links">
+            <a class="btn secondary" href="https://miltonstylesllc.github.io/live-amazon-rank-tracker/" target="_blank" rel="noopener">View Live Amazon Rank Tracker</a>
+          </div>
+        </div>
       </div>
     </section>
     <div class="links">
