@@ -144,16 +144,25 @@
 
     <fieldset>
       <legend class="hidden">Reason</legend>
-      <label class="option"><input type="radio" name="reason" value="Export didn't work or Amazon page changed"> Export didn't work, or the Amazon Ads page changed</label>
+      <label class="option"><input type="radio" name="reason" value="Export didn't work"> Export didn't work, or the Amazon Ads page changed</label>
+      <div id="broken-box" class="followup hidden" data-for="Export didn't work">
+        <label class="field" for="broken" style="margin-top:0">What didn't work?</label>
+        <textarea id="broken" data-detail maxlength="1000" placeholder="Which page you were on, what you clicked, and any message you saw"></textarea>
+        <p style="margin-top:10px">If you'd like us to tell you when it's fixed, leave your email below.</p>
+      </div>
       <label class="option"><input type="radio" name="reason" value="Marketplace not supported"> My marketplace isn't supported</label>
-      <div id="marketplace-box" class="followup hidden">
+      <div id="marketplace-box" class="followup hidden" data-for="Marketplace not supported">
         <label class="field" for="marketplace" style="margin-top:0">Which marketplace?</label>
-        <input type="text" id="marketplace" maxlength="60" placeholder="e.g. UK, Germany, Mexico">
-        <p style="margin-top:10px">We add marketplaces together with sellers who use them. If you'd be open to helping, leave your email below and we'll reach out.</p>
+        <input type="text" id="marketplace" data-detail maxlength="60" placeholder="e.g. UK, Germany, Mexico">
+        <p style="margin-top:10px">We add marketplaces based on demand, by working with sellers who use them. If you'd be open to helping us implement and test your marketplace, leave your email below and we'll reach out.</p>
       </div>
       <label class="option"><input type="radio" name="reason" value="Only needed it once"> Only needed it once</label>
       <label class="option"><input type="radio" name="reason" value="Pro price"> Pro price</label>
-      <label class="option"><input type="radio" name="reason" value="Use another tool or the API"> I use another tool or the Amazon Ads API</label>
+      <label class="option"><input type="radio" name="reason" value="Switched to another tool"> I switched to another tool</label>
+      <div id="tool-box" class="followup hidden" data-for="Switched to another tool">
+        <label class="field" for="tool" style="margin-top:0">Which one? <span class="hint">(optional)</span></label>
+        <input type="text" id="tool" data-detail maxlength="100">
+      </div>
       <label class="option"><input type="radio" name="reason" value="Other"> Other</label>
     </fieldset>
 
@@ -191,11 +200,14 @@
     var plan = ["free", "pro", "unknown"].indexOf(query.get("plan")) >= 0 ? query.get("plan") : "";
 
     var form = document.getElementById("feedback");
-    var marketplaceBox = document.getElementById("marketplace-box");
+    // Each reason with a follow-up box has one detail field, sent as "Reason: detail".
+    var followups = form.querySelectorAll(".followup[data-for]");
 
     form.addEventListener("change", function (e) {
       if (e.target.name === "reason") {
-        marketplaceBox.classList.toggle("hidden", e.target.value !== "Marketplace not supported");
+        followups.forEach(function (box) {
+          box.classList.toggle("hidden", box.getAttribute("data-for") !== e.target.value);
+        });
       }
     });
 
@@ -203,10 +215,12 @@
       e.preventDefault();
       var checked = form.querySelector('input[name="reason"]:checked');
       var reason = checked ? checked.value : "";
-      var marketplace = document.getElementById("marketplace").value.trim();
-      if (reason === "Marketplace not supported" && marketplace) {
-        reason += ": " + marketplace;
-      }
+      followups.forEach(function (box) {
+        var detail = box.querySelector("[data-detail]").value.trim();
+        if (reason === box.getAttribute("data-for") && detail) {
+          reason += ": " + detail;
+        }
+      });
       var details = document.getElementById("details").value.trim();
       var email = document.getElementById("email").value.trim();
 
