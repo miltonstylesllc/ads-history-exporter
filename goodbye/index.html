@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Feedback — Amazon Ads History Exporter</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a2e;
+      background: #f8f9fa;
+    }
+
+    header {
+      background: #232f3e;
+      padding: 28px 24px;
+    }
+
+    header h1 {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    header p {
+      color: #aab4be;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .accent { color: #ff9900; }
+
+    main {
+      max-width: 620px;
+      margin: 40px auto;
+      padding: 0 16px 80px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #232f3e;
+      margin-bottom: 6px;
+    }
+
+    .lede { color: #555; margin-bottom: 24px; }
+
+    fieldset { border: none; margin-bottom: 20px; }
+
+    .option {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #ffffff;
+      border: 1px solid #dde2e7;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .option:hover { border-color: #ff9900; }
+    .option input { margin-top: 5px; accent-color: #ff9900; }
+
+    .followup {
+      margin: 4px 0 12px 0;
+      padding: 12px 14px;
+      background: #fff8ec;
+      border-left: 3px solid #ff9900;
+      border-radius: 4px;
+      font-size: 15px;
+    }
+
+    .hidden { display: none; }
+
+    label.field {
+      display: block;
+      font-weight: 600;
+      font-size: 15px;
+      color: #232f3e;
+      margin: 18px 0 6px;
+    }
+
+    .hint { font-weight: 400; color: #666; }
+
+    input[type="text"], input[type="email"], textarea {
+      width: 100%;
+      font: inherit;
+      padding: 10px 12px;
+      border: 1px solid #c8cfd6;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #1a1a2e;
+    }
+
+    textarea { min-height: 96px; resize: vertical; }
+
+    input:focus, textarea:focus { outline: 2px solid #ff9900; outline-offset: 1px; }
+
+    button {
+      margin-top: 24px;
+      font: inherit;
+      font-weight: 600;
+      background: #ff9900;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 22px;
+      cursor: pointer;
+    }
+
+    button:disabled { opacity: 0.6; cursor: default; }
+
+    .note { margin-top: 28px; font-size: 13px; color: #666; }
+    .note a { color: #232f3e; }
+
+    .thanks {
+      background: #ffffff;
+      border: 1px solid #dde2e7;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .thanks p { margin-top: 8px; color: #333; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Amazon Ads <span class="accent">History Exporter</span></h1>
+  <p>Milton Styles LLC</p>
+</header>
+
+<main>
+  <form id="feedback" novalidate>
+    <h2>Why did you remove History Exporter?</h2>
+    <p class="lede">One optional question. It helps us fix what got in your way.</p>
+
+    <fieldset>
+      <legend class="hidden">Reason</legend>
+      <label class="option"><input type="radio" name="reason" value="Export didn't work or Amazon page changed"> Export didn't work, or the Amazon Ads page changed</label>
+      <label class="option"><input type="radio" name="reason" value="Marketplace not supported"> My marketplace isn't supported</label>
+      <div id="marketplace-box" class="followup hidden">
+        <label class="field" for="marketplace" style="margin-top:0">Which marketplace?</label>
+        <input type="text" id="marketplace" maxlength="60" placeholder="e.g. UK, Germany, Mexico">
+        <p style="margin-top:10px">We add marketplaces together with sellers who use them. If you'd be open to helping, leave your email below and we'll reach out.</p>
+      </div>
+      <label class="option"><input type="radio" name="reason" value="Only needed it once"> Only needed it once</label>
+      <label class="option"><input type="radio" name="reason" value="Pro price"> Pro price</label>
+      <label class="option"><input type="radio" name="reason" value="Use another tool or the API"> I use another tool or the Amazon Ads API</label>
+      <label class="option"><input type="radio" name="reason" value="Other"> Other</label>
+    </fieldset>
+
+    <label class="field" for="details">Anything we should fix? <span class="hint">(optional)</span></label>
+    <textarea id="details" maxlength="2000"></textarea>
+
+    <label class="field" for="email">Your email <span class="hint">(only if you'd like a reply)</span></label>
+    <input type="email" id="email" maxlength="200" autocomplete="email">
+
+    <button type="submit" id="send">Send feedback</button>
+
+    <p class="note">We receive only what you submit here, plus the extension version and whether Pro was active. <a href="../privacy/">Privacy policy</a></p>
+  </form>
+
+  <div id="thanks" class="thanks hidden">
+    <h2>Thank you.</h2>
+    <p>Your feedback was sent. If you left an email, we'll reply from support@miltonstyles.com.</p>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdx5oEGQlkphTpoMGOhPg1nPEqyUOcx0OV5bI8_5gatiq10gg/formResponse";
+    var FIELDS = {
+      extension: "entry.1870849792",
+      version: "entry.508031447",
+      plan: "entry.1965880871",
+      reason: "entry.678388324",
+      details: "entry.1168966079",
+      email: "entry.1867368217"
+    };
+
+    var query = new URLSearchParams(location.search);
+    var version = /^[0-9]+(\.[0-9]+){0,3}$/.test(query.get("v") || "") ? query.get("v") : "";
+    var plan = ["free", "pro", "unknown"].indexOf(query.get("plan")) >= 0 ? query.get("plan") : "";
+
+    var form = document.getElementById("feedback");
+    var marketplaceBox = document.getElementById("marketplace-box");
+
+    form.addEventListener("change", function (e) {
+      if (e.target.name === "reason") {
+        marketplaceBox.classList.toggle("hidden", e.target.value !== "Marketplace not supported");
+      }
+    });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var checked = form.querySelector('input[name="reason"]:checked');
+      var reason = checked ? checked.value : "";
+      var marketplace = document.getElementById("marketplace").value.trim();
+      if (reason === "Marketplace not supported" && marketplace) {
+        reason += ": " + marketplace;
+      }
+      var details = document.getElementById("details").value.trim();
+      var email = document.getElementById("email").value.trim();
+
+      if (!reason && !details && !email) {
+        showThanks();
+        return;
+      }
+
+      var body = new URLSearchParams();
+      body.append(FIELDS.extension, "history");
+      body.append(FIELDS.version, version);
+      body.append(FIELDS.plan, plan);
+      body.append(FIELDS.reason, reason);
+      body.append(FIELDS.details, details);
+      body.append(FIELDS.email, email);
+
+      document.getElementById("send").disabled = true;
+      // The response is opaque under no-cors, so the thank-you shows either way.
+      fetch(FORM_URL, { method: "POST", mode: "no-cors", body: body })
+        .catch(function () {})
+        .then(showThanks);
+    });
+
+    function showThanks() {
+      form.classList.add("hidden");
+      document.getElementById("thanks").classList.remove("hidden");
+    }
+  })();
+</script>
+
+</body>
+</html>
