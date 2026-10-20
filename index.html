@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amazon Ads History Exporter — Export Change History to CSV</title>
   <meta name="description" content="Export Amazon Ads Change History to CSV. Free unlimited History exports. Pro adds Batch Export, Account-Level History, date presets, and Enriched CSV. Official guide and workflow overview.">
+  <link rel="canonical" href="https://miltonstylesllc.github.io/ads-history-exporter/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Amazon Ads History Exporter",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Chrome",
+    "description": "Chrome extension that exports the Amazon Ads Change History tab to CSV. Free unlimited History exports; Pro adds Batch Export, Account-Level History, date presets, and Enriched CSV.",
+    "url": "https://miltonstylesllc.github.io/ads-history-exporter/",
+    "downloadUrl": "https://chromewebstore.google.com/detail/hoamefolmpkjfoobcbkpjhmabecgncgk",
+    "dateModified": "2026-10-19",
+    "offers": [
+      { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Pro monthly", "price": "9.99", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Pro yearly", "price": "79", "priceCurrency": "USD" }
+    ],
+    "publisher": { "@type": "Organization", "name": "Milton Styles LLC" }
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -350,6 +370,46 @@
       }
     }
 
+    .faq {
+      text-align: left;
+      margin-bottom: 28px;
+      scroll-margin-top: 24px;
+    }
+    .faq__title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+      text-align: center;
+    }
+    .faq__updated {
+      font-size: 12px;
+      color: #8a9bb0;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .faq__item {
+      background: #1a2535;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+    }
+    .faq__item h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .faq__item p {
+      font-size: 14px;
+      color: #c8d3dc;
+      line-height: 1.6;
+    }
+    .faq__item p + p {
+      margin-top: 8px;
+    }
+
     footer {
       margin-top: 32px;
       font-size: 12px;
@@ -454,6 +514,49 @@
     <div class="links">
       <a class="btn primary" href="https://chromewebstore.google.com/detail/hoamefolmpkjfoobcbkpjhmabecgncgk" target="_blank" rel="noopener">Get on Chrome Web Store</a>
     </div>
+
+    <section id="faq" class="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="faq__title">Questions about exporting Amazon Ads change history</h2>
+      <p class="faq__updated">Updated <time datetime="2026-10-19">October 19, 2026</time></p>
+
+      <div class="faq__item">
+        <h3>How do I export Amazon Ads change history to CSV?</h3>
+        <p>Install Amazon Ads History Exporter from the Chrome Web Store, open the History tab of any campaign or ad group in Amazon Ads, set the date range you want, and click Export to CSV in the extension popup. The extension scrolls the whole History list, pages through every page, and downloads a CSV with the change type, the old value, the new value, and the date and time of each change.</p>
+      </div>
+
+      <div class="faq__item">
+        <h3>Is it free?</h3>
+        <p>Yes. The free version exports any campaign or ad-group History tab with no limit on the number of exports. Pro ($9.99 a month or $79 a year) adds Batch Export across many campaigns, account-level History export, date presets including a max date range, and an Enriched CSV with campaign name, ad group, campaign type, and URL columns.</p>
+      </div>
+
+      <div class="faq__item">
+        <h3>How far back can I export Amazon Ads change history?</h3>
+        <p>As far back as Amazon's History tab allows. The tab's own date presets stop at the start of the year, and dragging its calendar all the way back reaches about 12 months. Amazon's Lifetime date setting, chosen on another Amazon Ads page, carries over to the History tab and may reach further: up to about 13 months in our latest testing, varying by campaign.</p>
+        <p>Pro's max date range applies that Lifetime carry-over for you on any campaign or ad-group History tab, and Batch Export allows it for every campaign in one run. Amazon has been narrowing this window over time, so exporting now is the safest way to keep your own record.</p>
+      </div>
+
+      <div class="faq__item">
+        <h3>I already use the Amazon Ads API. Why would I use this extension?</h3>
+        <p>The Amazon Ads API's change history covers a rolling 90 days for Sponsored Products and Sponsored Brands, and it requires API developer access. The extension exports as far back as the History tab in the Amazon Ads console allows, about 13 months in our latest testing, with no developer account or code. That makes it the practical way to backfill older change history.</p>
+      </div>
+
+      <div class="faq__item">
+        <h3>Does my advertising data leave my computer?</h3>
+        <p>No. The extension runs entirely in your browser and saves the CSV straight to your computer. It does not collect, store, or send your advertising data, and it never reads your Amazon password or session.</p>
+      </div>
+
+      <div class="faq__item">
+        <h3>Can I export change history for every campaign at once?</h3>
+        <p>Yes, with Pro. Batch Export walks through every campaign, or only the ones you select, and exports each History tab at the widest date range available, with no row limit; very large exports are split into numbered files. That is the way to backfill a whole account.</p>
+        <p>Account-Level History exports every change across your advertising account into one CSV, but Amazon caps that table at 10,000 rows, which on an active account can cover only a few weeks. Use it for weekly or monthly upkeep after the backfill, not for the backfill itself.</p>
+      </div>
+
+      <div class="faq__item">
+        <h3>Which Amazon Ads marketplaces are supported?</h3>
+        <p>US (advertising.amazon.com), Canada (advertising.amazon.ca), and India (advertising.amazon.in). We add marketplaces based on demand; email <a href="mailto:support@miltonstyles.com" style="color:#ff9900">support@miltonstyles.com</a> to request yours.</p>
+      </div>
+    </section>
+
     <section class="related-tool" aria-labelledby="related-rank-title">
       <div class="related-tool__row">
         <div class="related-tool__icon" aria-hidden="true">
