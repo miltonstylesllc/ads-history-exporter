@@ -174,7 +174,7 @@
 
     <button type="submit" id="send">Send feedback</button>
 
-    <p class="note">We receive only what you submit here, plus the extension version and whether Pro was active. <a href="../privacy/">Privacy policy</a></p>
+    <p class="note">We receive only what you submit here, plus the extension version<span id="note-browser"></span> and whether Pro was active. <a id="privacy-link" href="../privacy/">Privacy policy</a></p>
   </form>
 
   <div id="thanks" class="thanks hidden">
@@ -198,6 +198,13 @@
     var query = new URLSearchParams(location.search);
     var version = /^[0-9]+(\.[0-9]+){0,3}$/.test(query.get("v") || "") ? query.get("v") : "";
     var plan = ["free", "pro", "unknown"].indexOf(query.get("plan")) >= 0 ? query.get("plan") : "";
+    // The Edge Add-ons build adds b=edge; it rides in the version field ("1.3.2 edge")
+    // and switches the note to the Edge privacy policy.
+    if (query.get("b") === "edge") {
+      if (version) version += " edge";
+      document.getElementById("note-browser").textContent = ", that the browser is Edge,";
+      document.getElementById("privacy-link").href = "../privacy-edge/";
+    }
 
     var form = document.getElementById("feedback");
     // Each reason with a follow-up box has one detail field, sent as "Reason: detail".
