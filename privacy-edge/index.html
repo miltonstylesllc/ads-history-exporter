@@ -135,7 +135,7 @@
 
   <div class="summary-box">
     <strong>The bottom line</strong>
-    Your advertising data never leaves your browser: the extension saves it as a CSV on your
+    Your Amazon data never leaves your browser: the extension saves it as a CSV on your
     computer and we never receive it. The only things sent anywhere are the Pro subscription
     check with ExtensionPay and, if you remove the extension, the optional feedback page described below.
   </div>
@@ -150,7 +150,7 @@
   <p>
     When you click "Export to CSV," the extension scrolls through the full list on
     screen, captures every row, and triggers a download directly to your device.
-    No data is sent anywhere else.
+    Your Amazon data is not sent anywhere else.
   </p>
   <p>
     For Pro users, the extension can also run a user-initiated Batch Export from
@@ -160,7 +160,7 @@
 
   <h2>Data We Do Not Collect</h2>
   <ul>
-    <li>We do not collect any personal information, unless you choose to leave an email address on the feedback page</li>
+    <li>We do not collect any personal information, unless you choose to leave an email address on the feedback page. The email you use for Pro is handled by ExtensionPay (see Third Parties)</li>
     <li>We do not collect your Amazon account credentials, username, or password</li>
     <li>We do not collect your Amazon session tokens or cookies</li>
     <li>We do not record or store your browsing history</li>
@@ -179,7 +179,9 @@
     storage — for example, whether an export is currently running, your Batch Export mode,
     and how many exports you have run (used to time a one-off review request). This data never
     leaves your device. Running-export status ends with the browser session; preferences and
-    counts stay until you remove the extension.
+    counts stay until you remove the extension. If you use Pro, ExtensionPay keeps its
+    subscription record in your browser's sync storage, which Edge can sync to your
+    Microsoft account.
   </p>
   <p>
     The CSV file produced is downloaded directly to your computer.
@@ -211,12 +213,16 @@
         <td>Hosts: <code>advertising.amazon.com</code>, <code>advertising.amazon.ca</code>, <code>advertising.amazon.in</code></td>
         <td>To limit the extension to supported Amazon Advertising Console hosts (US, Canada, and India) only</td>
       </tr>
+      <tr>
+        <td>Host: <code>extensionpay.com</code></td>
+        <td>To check your Pro subscription status and open the ExtensionPay payment and login pages</td>
+      </tr>
     </tbody>
   </table>
 
   <h2>Third Parties</h2>
   <p>
-    <strong>Your advertising data</strong> is never shared with any third party.
+    <strong>Your Amazon data</strong> is never shared with any third party.
     The extension has no backend servers and no analytics service.
   </p>
   <p>
@@ -224,7 +230,7 @@
     tier, payment processing is handled by
     <a href="https://extensionpay.com" target="_blank" rel="noopener">ExtensionPay</a>
     (extensionpay.com) using Stripe. ExtensionPay uses a random, non-personally-identifiable
-    identifier that it assigns when the extension is installed — not your Amazon account — to
+    identifier that it assigns the first time you open the upgrade or login page — not your Amazon account — to
     verify subscription status. If you already subscribe to Pro on another computer or browser,
     log in with the same email in the extension to restore it; it is the same subscription, not a second purchase. Stripe collects and processes your payment information
     directly. Full payment method details — including your full card number and
@@ -233,8 +239,8 @@
     the privacy policies of ExtensionPay and Stripe.
   </p>
   <p>
-    <strong>Subscription status check:</strong> When the extension loads, it contacts
-    extensionpay.com to verify your Pro subscription status. No advertising data,
+    <strong>Subscription status check:</strong> Once you have opened the upgrade or login page,
+    the extension contacts extensionpay.com when it loads to verify your Pro subscription status. No Amazon data,
     Amazon account information, or browsing history is included in this request.
   </p>
 
