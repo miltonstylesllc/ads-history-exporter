@@ -127,134 +127,89 @@
 
 <header>
   <h1><span class="accent">Amazon Ads History Exporter</span> &mdash; Privacy Policy</h1>
-  <p>Milton Styles LLC &nbsp;&middot;&nbsp; Effective October 28, 2026</p>
+  <p>Milton Styles LLC &nbsp;&middot;&nbsp; Effective November 2, 2026</p>
 </header>
 
 <main>
 
   <div class="summary-box">
     <strong>The bottom line</strong>
-    Your Amazon data never leaves your browser: the extension saves it as a CSV on your
-    computer and we never receive it. The only things sent anywhere are the Pro subscription
-    check with ExtensionPay and, if you remove the extension, the optional feedback page described below.
+    Your Amazon data never leaves your browser: the extension saves it as a CSV on your computer and we never receive it.
+    We only receive an email address if you subscribe to Pro, log in to it, or choose to leave one on the removal feedback page.
   </div>
 
   <h2>What This Extension Does</h2>
   <p>
-    Amazon Ads History Exporter is a Chrome extension that reads the History data
-    already displayed in your Amazon Ads and saves it as CSV files on your computer.
-    This can include campaign-level History, ad-group-level History, and account-level
-    History.
-  </p>
-  <p>
-    When you click "Export to CSV," the extension scrolls through the full list on
-    screen, captures every row, and triggers a download directly to your device.
-    Your Amazon data is not sent anywhere else.
-  </p>
-  <p>
-    For Pro users, the extension can also run a user-initiated Batch Export from
-    Campaign Manager to export multiple campaign histories in sequence. This processing
-    still happens locally in your browser.
+    Amazon Ads History Exporter is a Chrome extension that reads the History data already shown in your Amazon Ads console
+    (campaign, ad group or whole account) and saves it as CSV files on your computer. Pro adds Batch Export across campaigns.
+    All of this runs locally in your browser.
   </p>
 
-  <h2>Data We Do Not Collect</h2>
+  <h2>What We Do Not Collect</h2>
   <ul>
-    <li>We do not collect any personal information, unless you choose to leave an email address on the feedback page. The email you use for Pro is handled by ExtensionPay (see Third Parties)</li>
-    <li>We do not collect your Amazon account credentials, username, or password</li>
-    <li>We do not collect your Amazon session tokens or cookies</li>
-    <li>We do not record or store your browsing history</li>
-    <li>We do not collect or store the advertising data you export</li>
-    <li>We do not use analytics, crash reporting, or usage tracking of any kind</li>
+    <li>Your Amazon advertising data or the files you export</li>
+    <li>Your Amazon login, password, session tokens or cookies</li>
+    <li>Your browsing history</li>
+    <li>Analytics, crash reports or usage tracking of any kind</li>
   </ul>
 
-  <h2>How Your Data Is Handled</h2>
+  <h2>What Stays in Your Browser</h2>
   <p>
-    All processing happens locally inside your browser. The extension reads what is
-    already visible on your screen, assembles it into a CSV file, and downloads it
-    to your computer using your browser's standard file download.
-  </p>
-  <p>
-    The extension saves a small amount of status data and preferences in your browser's local
-    storage — for example, whether an export is currently running, your Batch Export mode,
-    and how many exports you have run (used to time a one-off review request). This data never
-    leaves your device. Running-export status ends with the browser session; preferences and
-    counts stay until you remove the extension. ExtensionPay, the payment service, also keeps a few small records in your
-    browser's sync storage, which Chrome can sync to your Google account: the date the
-    extension was installed (for every install) and, once you have opened the upgrade or
-    login page, its key for your browser and your subscription record.
-  </p>
-  <p>
-    The CSV file produced is downloaded directly to your computer.
-    Milton Styles LLC never receives, sees, or stores this file.
+    The extension keeps a few settings and status values (for example, whether an export is running and your Batch Export mode)
+    in your browser's local storage. ExtensionPay, our payment service, keeps the install date and, once you open the upgrade or
+    login page, its key for your browser and your subscription record in your browser's sync storage, which Chrome can sync to
+    your Google account. We don't receive these browser copies; the email ExtensionPay shares with us is covered below.
   </p>
 
-  <h2>Permissions Explained</h2>
+  <h2>Your Email Address</h2>
   <p>
-    The extension requests only the minimum permissions needed to function:
+    You can use the free version without giving us an email. We receive an email address in two cases only:
   </p>
+  <ul>
+    <li><strong>Pro.</strong> If you subscribe or log in, you enter your email on ExtensionPay's checkout or login page, and ExtensionPay shares it with us. The extension also keeps your subscription record, including that email, in your browser's sync storage.</li>
+    <li><strong>Removal feedback.</strong> If you choose to leave an email on the feedback page, we use it only to reply to you.</li>
+  </ul>
+  <p>
+    We use a Pro email to run your subscription: confirming it, a one-time welcome email, and replies when you write to us.
+    The welcome email may mention our other tools. Beyond that, we send news about new features or products only if you ask for it
+    (reply &ldquo;news&rdquo;), and you can stop it at any time by replying &ldquo;unsubscribe&rdquo;.
+    We never sell or rent your email, never give it to advertising platforms, and never use it for ads.
+    To have us delete it, write to support@miltonstyles.com and we will remove it from our records. ExtensionPay and Stripe may keep their own records, such as billing records the law requires.
+  </p>
+
+  <h2>Third Parties</h2>
+  <ul>
+    <li><strong>ExtensionPay and Stripe</strong> (Pro only) handle checkout and payment. Card details go to Stripe and are never visible to us.
+      When the extension loads, it checks your subscription status with extensionpay.com; no Amazon data is included.
+      To use Pro on another computer, log in with the same email.</li>
+    <li><strong>Google Forms.</strong> When you remove the extension, the browser opens an optional feedback page; Google Forms receives only the answers you submit. The page address
+      includes the extension version and whether Pro was active.</li>
+  </ul>
+
+  <h2>Permissions</h2>
   <table>
     <thead>
       <tr><th>Permission</th><th>Why it is needed</th></tr>
     </thead>
     <tbody>
-      <tr>
-        <td><code>activeTab</code></td>
-        <td>To read the Change History table on the Amazon Ads tab you have open</td>
-      </tr>
-      <tr>
-        <td><code>downloads</code></td>
-        <td>To trigger the CSV file download to your computer</td>
-      </tr>
-      <tr>
-        <td><code>storage</code></td>
-        <td>To store export state and preferences locally in your browser</td>
-      </tr>
-      <tr>
-        <td>Hosts: <code>advertising.amazon.com</code>, <code>advertising.amazon.ca</code>, <code>advertising.amazon.in</code></td>
-        <td>To limit the extension to supported Amazon Advertising Console hosts (US, Canada, and India) only</td>
-      </tr>
-      <tr>
-        <td>Host: <code>extensionpay.com</code></td>
-        <td>To check your Pro subscription status and open the ExtensionPay payment and login pages</td>
-      </tr>
+      <tr><td><code>activeTab</code></td><td>To read the Change History table on the Amazon Ads tab you have open</td></tr>
+      <tr><td><code>downloads</code></td><td>To save the CSV file to your computer</td></tr>
+      <tr><td><code>storage</code></td><td>To keep export status and preferences in your browser</td></tr>
+      <tr><td>Hosts: <code>advertising.amazon.com</code>, <code>advertising.amazon.ca</code>, <code>advertising.amazon.in</code></td><td>The supported Amazon Ads consoles (US, Canada and India)</td></tr>
+      <tr><td>Host: <code>extensionpay.com</code></td><td>To check Pro status and open the payment and login pages</td></tr>
     </tbody>
   </table>
 
-  <h2>Third Parties</h2>
+  <h2>Chrome Web Store User Data Policy</h2>
   <p>
-    <strong>Your Amazon data</strong> is never shared with any third party.
-    The extension has no backend servers and no analytics service.
-  </p>
-  <p>
-    <strong>Payment processing (Pro tier only):</strong> If you subscribe to the Pro
-    tier, payment processing is handled by
-    <a href="https://extensionpay.com" target="_blank" rel="noopener">ExtensionPay</a>
-    (extensionpay.com) using Stripe. ExtensionPay uses a random, non-personally-identifiable
-    identifier that it assigns the first time you open the upgrade or login page — not your Amazon account — to
-    verify subscription status. If you already subscribe to Pro on another computer or browser,
-    log in with the same email in the extension to restore it; it is the same subscription, not a second purchase. Stripe collects and processes your payment information
-    directly. Full payment method details — including your full card number and
-    security code — are handled exclusively by Stripe and are never visible to
-    Milton Styles LLC. Your name, card information, and payment data are subject to
-    the privacy policies of ExtensionPay and Stripe.
-  </p>
-  <p>
-    <strong>Subscription status check:</strong> Once you have opened the upgrade or login page,
-    the extension contacts extensionpay.com when it loads to verify your Pro subscription status. No Amazon data,
-    Amazon account information, or browsing history is included in this request.
-  </p>
-
-  <h2>Feedback When You Remove the Extension</h2>
-  <p>
-    When you remove the extension, Chrome opens a short optional feedback page on our site. The page address includes the extension version and whether Pro was active. Answering is optional; we receive only what you choose to submit, including an email address if you choose to leave one.
-    Answers are collected through Google Forms and used only to improve the extension and to reply if you asked us to.
+    Our use of information received through this extension adheres to the Chrome Web Store User Data Policy,
+    including the Limited Use requirements.
   </p>
 
   <h2>Changes to This Policy</h2>
   <p>
-    If this policy is updated, the new version will be published at this URL with an
-    updated effective date. Significant changes will also be noted in the extension's
-    Chrome Web Store update log.
+    Updates are published at this address with a new effective date. Significant changes are also noted in the
+    extension's Chrome Web Store update notes.
   </p>
 
   <div class="contact">
